@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 23:53:46 by arabelo-          #+#    #+#             */
-/*   Updated: 2024/04/18 09:32:28 by arabelo-         ###   ########.fr       */
+/*   Updated: 2024/04/19 10:06:08 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ void	displayMessages(Harl harl, std::string level) {
 	while (lvl < levels->length() && levels[lvl] != level) {
 		lvl++;
 	}
-	if (lvl >= levels->length())
+	if (lvl >= levels->length()) {
 		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-	else
-		std::cout << "[ " << levels[lvl] << " ]" << std::endl;
+		return ;
+	}
 	while (lvl <= 3) {
+		std::cout << "[ " << levels[lvl] << " ]" << std::endl;
 		harl.complain(levels[lvl]);
+		std::cout << std::endl;
 		lvl++;
 	}
 }
