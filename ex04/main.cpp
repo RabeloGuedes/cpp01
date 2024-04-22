@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:55:03 by arabelo-          #+#    #+#             */
-/*   Updated: 2024/04/09 16:42:12 by arabelo-         ###   ########.fr       */
+/*   Updated: 2024/04/22 08:50:21 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,12 @@
 #include <string>
 #include <fstream>
 
-int	findStr(std::string big, std::string little) {
-	for (size_t i = 0; i < big.length(); i++) {
-		for (size_t j = 0; j < big.length() && j < little.length() && big[i + j] == little[j]; j++) {
-			if (!little[j + 1])
-				return ((int)i);
-		}
-	}
-	return (-1);
-}
-
 void	replaceString(std::string &str, std::string toBeReplaced, std::string newString) {
-	for (size_t i = 0; i < str.length(); i++) {
-		int	res = findStr(str, toBeReplaced);
-		if (res != -1) {
-			str.erase(res, toBeReplaced.length());
-			str.insert(res, newString);
+	for (size_t pos = 0; pos < str.length(); pos++) {
+		if (!str.find(toBeReplaced, pos)) {
+			str.erase(pos, toBeReplaced.length());
+			str.insert(pos, newString);
+			pos += toBeReplaced.length();
 		}
 	}
 }
