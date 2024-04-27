@@ -17,10 +17,17 @@ int	main(void) {
 	Zombie	*zombie2 = newZombie("Bar");
 	Zombie	zombie3 = Zombie("Heliot");
 
+	if (!zombie || !zombie2 || !zombie3) {
+		std::cout << "Memory allocation failed" << endl;
+		delete zombie;
+		delete zombie2;
+		return (1);
+	}
 	zombie->announce();
 	randomChump("Kakarot");
 	zombie2->announce();
 	zombie3.announce();
 	delete zombie;
 	delete zombie2;
+	return (0);
 }
