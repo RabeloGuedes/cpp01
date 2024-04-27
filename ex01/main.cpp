@@ -13,10 +13,10 @@
 #include <Zombie.hpp>
 
 int	main(void) {
-	size_t	zombiesNb = 5;
+	int	zombiesNb = 5;
 	Zombie	*zombies = zombieHorde(zombiesNb, "Stain");
 
-	for (size_t i = 0; i < zombiesNb; i++) {
+	for (int i = 0; i < zombiesNb; i++) {
 		zombies[i].announce();
 	}
 
