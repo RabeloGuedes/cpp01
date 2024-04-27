@@ -17,7 +17,7 @@
 void	replaceString(std::string &str, std::string toBeReplaced, std::string newString) {
 	for (size_t pos = 0; pos < str.length(); pos++) {
 		if (!str.find(toBeReplaced, pos)) {
-			str.erase(pos, toBeReplaced.length());
+			str.erase(pos, toBeReplaced.length() - 1);
 			str.insert(pos, newString);
 			pos += toBeReplaced.length();
 		}
