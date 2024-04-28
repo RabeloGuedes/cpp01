@@ -39,21 +39,22 @@ void	Harl::error(void) {
 }
 
 void	Harl::complain(std::string level) {
+	ptrToMemberFunction	ptrs[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	tHarl	res = getEHarl(level);
 
 	switch (res)
 	{
 	case E_DEBUG:
-		debug();
+		(this->*(ptrs[res]))();
 		break ;
 	case E_INFO:
-		info();
+		(this->*(ptrs[res]))();
 		break ;
 	case E_WARNING:
-		warning();
+		(this->*(ptrs[res]))();
 		break ;
 	case E_ERROR:
-		error();
+		(this->*(ptrs[res]))();
 		break ;
 	default:
 		std::cout << "Invalid complain: range goes from 0 to 3" << std::endl;

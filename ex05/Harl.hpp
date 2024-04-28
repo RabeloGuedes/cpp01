@@ -38,4 +38,6 @@ class Harl {
 
 tHarl	getEHarl(std::string level);
 
+typedef void (Harl::*ptrToMemberFunction)();
+
 #endif
