@@ -12,42 +12,12 @@
 
 #include <Harl.hpp>
 
-tHarl	getEHarl(std::string level) {
-	if (level == "DEBUG")
-		return (E_DEBUG);
-	if (level == "INFO")
-		return (E_INFO);
-	if (level == "WARNING")
-		return (E_WARNING);
-	if (level == "ERROR")
-		return (E_ERROR);
-	return (E_EXCEPTION);
-}
-
-void	displayMessages(Harl harl, std::string level) {
-	std::string	levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	size_t		lvl = 0;
-
-	while (lvl < levels->length() && levels[lvl] != level) {
-		lvl++;
-	}
-	if (lvl >= levels->length()) {
-		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-		return ;
-	}
-	while (lvl <= 3) {
-		std::cout << "[ " << levels[lvl] << " ]" << std::endl;
-		harl.complain(levels[lvl]);
-		std::cout << std::endl;
-		lvl++;
-	}
-}
-
 int	main(int ac, char **av) {
 	if (ac != 2)
 		return (1);
 	Harl	harl;
+	std::string	level(*(av + 1));
 
-	displayMessages(harl, *(av + 1));
+	harl.complain(level);
 	return (1);
 }

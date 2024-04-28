@@ -16,14 +16,6 @@
 # include <iostream>
 # include <string>
 
-typedef	enum eHarl {
-	E_DEBUG,
-	E_INFO,
-	E_WARNING,
-	E_ERROR,
-	E_EXCEPTION,
-}	tHarl;
-
 class Harl {
 	public:
 		Harl();
@@ -36,6 +28,6 @@ class Harl {
 		void	error(void);
 };
 
-tHarl	getEHarl(std::string level);
+typedef void	(Harl::*ptrToMemberFunction)(void);
 
 #endif
