@@ -9,15 +9,15 @@ OBJS = $(SRC:%.cpp=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) main.cpp
-	@$(CXX) $(CXXFLAGS) $(OBJS) main.cpp -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) main.cpp -o $(NAME)
 
 %.o: %.cpp
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	@rm -r $(OBJS)
+	rm -r $(OBJS)
 
 fclean: clean
-	@rm -r $(NAME)
+	rm -r $(NAME)
 
 re: fclean all

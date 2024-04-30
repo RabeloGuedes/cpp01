@@ -6,9 +6,9 @@ NAME = HiThisIsBrain
 all: $(NAME)
 
 $(NAME): main.cpp
-	@$(CXX) $(CXXFLAGS) main.cpp -o $(NAME)
+	$(CXX) $(CXXFLAGS) main.cpp -o $(NAME)
 
 fclean:
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all

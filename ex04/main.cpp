@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:55:03 by arabelo-          #+#    #+#             */
-/*   Updated: 2024/04/22 08:50:21 by arabelo-         ###   ########.fr       */
+/*   Updated: 2024/04/30 20:08:36 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int ac, char **av) {
 	std::string		fileNameReplace(fileName);
 	std::string 	firstString(*av++);
 	std::string 	secondString(*av);
-	std::ifstream	oldFile(fileName);
+	std::ifstream	oldFile((char *)fileName);
 	std::string		test;
 
 	if (!oldFile.is_open()) {
@@ -43,7 +43,7 @@ int	main(int ac, char **av) {
 		return (1);
 	}
 	fileNameReplace.append(".replace");
-	std::ofstream	newFile(fileNameReplace);
+	std::ofstream	newFile((char *)fileNameReplace);
 	if (!newFile.is_open()) {
 		std::cerr << "Failed trying to open: " << fileNameReplace << std::endl;
 		oldFile.close();

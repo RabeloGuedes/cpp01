@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:15:06 by arabelo-          #+#    #+#             */
-/*   Updated: 2024/04/07 17:34:02 by arabelo-         ###   ########.fr       */
+/*   Updated: 2024/04/30 20:00:22 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	main(void) {
 	Zombie	*zombie2 = newZombie("Bar");
 	Zombie	zombie3 = Zombie("Heliot");
 
-	if (!zombie || !zombie2 || !zombie3) {
-		std::cout << "Memory allocation failed" << endl;
+	if (!zombie || !zombie2) {
+		std::cout << "Memory allocation failed" << std::endl;
 		delete zombie;
 		delete zombie2;
 		return (1);
