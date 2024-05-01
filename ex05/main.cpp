@@ -12,18 +12,6 @@
 
 #include <Harl.hpp>
 
-tHarl	getEHarl(std::string level) {
-	if (level == "DEBUG")
-		return (E_DEBUG);
-	if (level == "INFO")
-		return (E_INFO);
-	if (level == "WARNING")
-		return (E_WARNING);
-	if (level == "ERROR")
-		return (E_ERROR);
-	return (E_EXCEPTION);
-}
-
 int	main(void) {
 	Harl	harl;
 
