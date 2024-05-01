@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 23:29:22 by arabelo-          #+#    #+#             */
-/*   Updated: 2024/04/18 00:55:03 by arabelo-         ###   ########.fr       */
+/*   Updated: 2024/05/01 19:14:42 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,5 @@ class Harl {
 		void	warning(void);
 		void	error(void);
 };
-
-typedef void	(Harl::*ptrToMemberFunction)(void);
 
 #endif

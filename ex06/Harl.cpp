@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 23:33:51 by arabelo-          #+#    #+#             */
-/*   Updated: 2024/04/19 10:08:05 by arabelo-         ###   ########.fr       */
+/*   Updated: 2024/05/01 19:12:55 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	Harl::error(void) {
 }
 
 void	Harl::complain(std::string level) {
-	ptrToMemberFunction	ptrs[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	int	i = 0;
 
@@ -52,16 +51,16 @@ void	Harl::complain(std::string level) {
 	switch (i)
 	{
 	case 0:
-		(this->*(ptrs[0]))();
+		Harl::debug();
 		std::cout << std::endl;
 	case 1:
-		(this->*(ptrs[1]))();
+		Harl::info();
 		std::cout << std::endl;
 	case 2:
-		(this->*(ptrs[2]))();
+		Harl::warning();
 		std::cout << std::endl;
 	case 3:
-		(this->*(ptrs[3]))();
+		Harl::error();
 		std::cout << std::endl;
 		break ;
 	default:

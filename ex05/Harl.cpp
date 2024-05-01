@@ -37,29 +37,15 @@ void	Harl::error(void) {
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
+void	Harl::notFound(void) {
+	std::cerr << "Complain not Found" << std::endl;
+}
+
 void	Harl::complain(std::string level) {
-	ptrToMemberFunction	ptrs[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	int	i = 0;
-
+	void	(Harl::*fptr[5])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error, &Harl::notFound};
 	while (i < 4 && levels[i] != level)
 		i++;
-	switch (i)
-	{
-	case 0:
-		(this->*(ptrs[0]))();
-		break ;
-	case 1:
-		(this->*(ptrs[1]))();
-		break ;
-	case 2:
-		(this->*(ptrs[2]))();
-		break ;
-	case 3:
-		(this->*(ptrs[3]))();
-		break ;
-	default:
-		std::cout << "Invalid complain: range goes from 0 to 3" << std::endl;
-		break ;
-	}
+	(this->*fptr[i])();
 }
