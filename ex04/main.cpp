@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: arabelo- <arabelo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:55:03 by arabelo-          #+#    #+#             */
-/*   Updated: 2024/04/30 20:08:36 by arabelo-         ###   ########.fr       */
+/*   Updated: 2024/05/02 19:36:04 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int	main(int ac, char **av) {
 	}
 	av++;
 	std::string		fileName(*av++);
-	std::string		fileNameReplace(fileName);
+	std::string		fileNameReplace(fileName.c_str());
 	std::string 	firstString(*av++);
 	std::string 	secondString(*av);
-	std::ifstream	oldFile((char *)fileName);
+	std::ifstream	oldFile(fileName.c_str());
 	std::string		test;
 
 	if (!oldFile.is_open()) {
@@ -43,7 +43,7 @@ int	main(int ac, char **av) {
 		return (1);
 	}
 	fileNameReplace.append(".replace");
-	std::ofstream	newFile((char *)fileNameReplace);
+	std::ofstream	newFile(fileNameReplace.c_str());
 	if (!newFile.is_open()) {
 		std::cerr << "Failed trying to open: " << fileNameReplace << std::endl;
 		oldFile.close();
