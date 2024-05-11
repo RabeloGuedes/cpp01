@@ -6,23 +6,14 @@
 /*   By: arabelo- <arabelo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:55:03 by arabelo-          #+#    #+#             */
-/*   Updated: 2024/05/02 19:36:04 by arabelo-         ###   ########.fr       */
+/*   Updated: 2024/05/11 19:00:24 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <fstream>
-
-void	replaceString(std::string &str, std::string toBeReplaced, std::string newString) {
-	for (size_t pos = 0; pos < str.length(); pos++) {
-		if (!str.find(toBeReplaced, pos)) {
-			str.erase(pos, toBeReplaced.length() - 1);
-			str.insert(pos, newString);
-			pos += toBeReplaced.length();
-		}
-	}
-}
+#include <sstream>
 
 int	main(int ac, char **av) {
 	if (ac != 4) {
@@ -31,12 +22,12 @@ int	main(int ac, char **av) {
 		return (1);
 	}
 	av++;
-	std::string		fileName(*av++);
-	std::string		fileNameReplace(fileName.c_str());
-	std::string 	firstString(*av++);
-	std::string 	secondString(*av);
-	std::ifstream	oldFile(fileName.c_str());
-	std::string		test;
+	std::string			fileName(*av++);
+	std::string			fileNameReplace(fileName.c_str());
+	std::string 		firstString(*av++);
+	std::string 		secondString(*av);
+	std::ifstream		oldFile(fileName.c_str());
+	std::stringstream	str;
 
 	if (!oldFile.is_open()) {
 		std::cerr << "Failed trying to open: " << fileName << std::endl;
@@ -49,10 +40,18 @@ int	main(int ac, char **av) {
 		oldFile.close();
 		return (1);
 	}
-	while (std::getline(oldFile, test)) {
-		replaceString(test, firstString, secondString);
-		newFile << test << std::endl;
+	str << oldFile.rdbuf();
+	std::string s;
+	s = str.str();
+	if (!firstString.empty()) {
+		size_t pos = s.find(firstString, 0); 
+		while (pos != std::string::npos) {
+			s.erase(pos, firstString.length());
+			s.insert(pos, secondString);
+			pos = s.find(firstString, pos + secondString.length());
+		}
 	}
+	newFile << s << std::endl;
 	oldFile.close();
 	newFile.close();
 	return (0);
